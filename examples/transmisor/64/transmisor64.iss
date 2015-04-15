@@ -2,7 +2,7 @@
 AppName=MensajeroTransmisor
 AppVerName=Mensajero Transmisor 0.1
 AppPublisher=Jumanor Technology
-DefaultDirName={pf}\Mensajero\transmisor
+DefaultDirName={pf64}\Mensajero\transmisor
 DefaultGroupName=Mensajero
 UninstallDisplayIcon={app}\MensajeroTranmisor.exe
 Compression=lzma
@@ -11,28 +11,24 @@ OutputDir=userdocs:Inno Setup Examples Output
 DisableProgramGroupPage=yes
 
 [Files]
-Source: "transmisor32.exe"; DestDir: "{app}";
-Source: "transmisor32.ini"; DestDir: "{app}";
-Source: "transmisor32Start.bat"; DestDir: "{app}";
-Source: "transmisor32Stop.bat"; DestDir: "{app}";
+Source: "transmisor64.exe"; DestDir: "{app}";
+Source: "transmisor64.ini"; DestDir: "{app}";
 Source: "transmisor.jar"; DestDir: "{app}";
-Source: "server.ico"; DestDir: "{app}";
+Source: "transmisor.ico"; DestDir: "{app}";
+Source: "transmisor64.bat"; DestDir: "{app}";
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Icons]
-Name: "{group}\mensajero"; Filename: "{app}\transmisor32Start.bat";IconFilename: "{app}\cliente.ico"
-Name: "{commondesktop}\mensajero"; Filename: "{app}\transmisor32Start.bat"; Tasks: desktopicon ; IconFilename: "{app}\cliente.ico"
+Name: "{group}\transmisor"; Filename: "{app}\transmisor64.bat";IconFilename: "{app}\transmisor.ico"
+Name: "{commondesktop}\transmisor"; Filename: "{app}\transmisor64.bat"; Tasks: desktopicon ; IconFilename: "{app}\transmisor.ico"
 
 [Languages]
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 
-;[Registry]
-;Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "Mensajero"; ValueData: """{app}\server.exe"""; Flags: uninsdeletevalue
-
 [Run]
-Filename: "{app}\transmisor32Start.bat"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\transmisor64.bat"; Flags: nowait postinstall skipifsilent
 
 [Code]
 function InitializeSetup(): Boolean;

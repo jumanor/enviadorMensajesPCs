@@ -1,20 +1,19 @@
 [Setup]
-AppName=Mensajero
-AppVerName=Mensajero 0.1
-DefaultDirName={pf}\Mensajero\Cliente
+AppName=MensajeroServer
+AppVerName=Mensajero Server 0.1
+DefaultDirName={pf}\Mensajero\Server
 DefaultGroupName=Mensajero
-UninstallDisplayIcon={app}\Mensajero.exe
+UninstallDisplayIcon={app}\MensajeroServer.exe
 Compression=lzma
 SolidCompression=yes
 OutputDir=userdocs:Inno Setup Examples Output
 
 [Files]
-Source: "cliente32.exe"; DestDir: "{app}";
-Source: "cliente32.ini"; DestDir: "{app}";
-Source: "cliente.jar"; DestDir: "{app}";
 Source: "server32Start.bat"; DestDir: "{app}";
 Source: "server32Stop.bat"; DestDir: "{app}";
-
+Source: "server.jar"; DestDir: "{app}";
+Source: "server32.exe"; DestDir: "{app}";
+Source: "server32.ini"; DestDir: "{app}";
 ;[Icons]
 ;Name: "{group}\mensajero"; Filename: "{app}\cliente16.exe"
 
@@ -22,10 +21,10 @@ Source: "server32Stop.bat"; DestDir: "{app}";
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 
 [Registry]
-Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "Mensajero"; ValueData: """{app}\server32Start.exe"""; Flags: uninsdeletevalue
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "MensajeroSrv"; ValueData: """{app}\server32Start.bat"""; Flags: uninsdeletevalue
 
 [Run]
-Filename: "{app}\server32Start.exe"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\server32Start.bat"; Flags: nowait postinstall skipifsilent
 
 [Code]
 function InitializeSetup(): Boolean;
